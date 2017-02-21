@@ -7,7 +7,7 @@ namespace :webpacker do
     dist_dir = Rails.application.config.x.webpacker[:packs_dist_dir]
     result   = `WEBPACK_DIST_DIR=#{dist_dir} WEBPACK_ENV=production ./bin/webpack --json`
 
-    # puts result
+    File.open(Rails.root.join('log','webpacker-result.json'), 'w') {|f|f.write result}
     puts $?
     # exit! $?.exitstatus unless $?.success?
 
